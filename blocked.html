@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Blocked · Ghassil</title>
+<style>
+  *{margin:0;box-sizing:border-box;font-family:"Segoe UI",system-ui,sans-serif}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 30% 20%,#0c2417,transparent 50%),
+      radial-gradient(circle at 80% 80%,#08301c,transparent 50%),#04140a;color:#eafff2;text-align:center;padding:24px}
+  .card{max-width:520px}
+  .shield{font-size:5rem;filter:drop-shadow(0 6px 20px rgba(31,170,89,.5))}
+  h1{font-size:2rem;color:#7ef0ad;margin:10px 0}
+  .ar{font-family:"Traditional Arabic","Amiri",serif;font-size:1.6rem;color:#bfeacf;margin:8px 0 16px;direction:rtl}
+  p{color:#bfeacf;line-height:1.6;margin-bottom:8px}
+  .reason{display:inline-block;background:rgba(217,83,79,.2);color:#ff9a9a;border:1px solid #d9534f;
+    border-radius:20px;padding:4px 14px;font-size:.85rem;margin-top:6px}
+  .actions{margin-top:22px;display:flex;gap:10px;justify-content:center}
+  a,button{padding:11px 20px;border-radius:30px;border:none;cursor:pointer;font-weight:700;text-decoration:none;font-size:.95rem}
+  .back{background:linear-gradient(135deg,#1faa59,#0f7a3d);color:#fff}
+  .home{background:transparent;border:1.5px solid #1faa59;color:#7ef0ad}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="shield">🛡️</div>
+    <h1>Content Blocked</h1>
+    <div class="ar">وَقُل لِّلْمُؤْمِنِينَ يَغُضُّوا۟ مِنْ أَبْصَـٰرِهِمْ</div>
+    <p id="msg">This page was blocked by Ghassil for your protection.</p>
+    <div class="reason" id="reason"></div>
+    <div class="actions">
+      <button class="back" onclick="history.length>2?history.go(-2):location.href='https://www.google.com'">← Go Back</button>
+      <a class="home" href="https://quran.com">Read Qur'an</a>
+    </div>
+  </div>
+<script>
+  const p = new URLSearchParams(location.search);
+  const r = p.get("r");
+  document.getElementById("reason").textContent =
+    r === "search" ? "Reason: explicit search query" :
+    r === "site" ? "Reason: haram website" : "Reason: blocked content";
+</script>
+</body>
+</html>
